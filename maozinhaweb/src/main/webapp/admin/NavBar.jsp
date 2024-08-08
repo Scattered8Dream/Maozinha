@@ -34,18 +34,8 @@
 		<div class="collapse navbar-collapse" id="navbarSupportedContent">
 			<ul class="navbar-nav me-auto mb-2 mb-lg-0">
 				<li class="nav-item"><a class="nav-link active"
-					aria-current="page" href="#"><i class="fa-solid fa-house m-2"></i>Home</a>
+					aria-current="page" href="home.jsp"><i class="fa-solid fa-house m-2"></i>Home</a>
 				</li>
-				<li class="nav-item"><a class="nav-link active"
-					aria-current="page" href="#"><i class="fa-solid fa-star m-2"></i>Recentes</a>
-				</li>
-				<li class="nav-item"><a class="nav-link active"
-					aria-current="page" href="#"><i class="fa-solid fa-hand m-2"></i>Mãozinhas</a>
-				</li>
-				<li class="nav-item"><a class="nav-link active"
-					aria-current="page" href="#"><i
-						class="fa-solid fa-question m-2"></i>Sobre nós</a></li>
-				<li class="nav-item">
 			</ul>
 			<form class="form-inline my-2 my-lg-0">
 				<button class="btn btn-light my-2 my-sm-0" type="submit">
