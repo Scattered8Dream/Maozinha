@@ -22,24 +22,15 @@
 					<div class="card-body">
 						<h4 class="text-center">Editar mãozinha</h4>
 						
-						<c:if test="${not empty succMsg }">
-							<p class="text-center text-success">${succMsg }</p>
-							<c:remove var="succMsg" scope="session"/>
-						</c:if>
-						
-						<c:if test="${not empty failMsg }">
-							<p class="text-center text-danger">${failMsg }</p>
-							<c:remove var="failMsg" scope="session"/>
-						</c:if>
-						
 						<% 
 							int id=Integer.parseInt(request.getParameter("id"));
 							MaozinhaDAOImplement dao= new MaozinhaDAOImplement(DBConnect.getConn());
 							MaozinhaDtls m=dao.getMaozinhaById(id);
 						%>
 						
-						<form action="../add_maozinhas" method="post"
-							enctype="multipart/form-data">
+						<form action="../edit_maozinhas" method="post">
+
+							<input type="hidden" name="id" value="<%=m.getMaozinha_id()>">
 
 							<div class="form-group pt-2">
 								<label for="exampleInputEmail">Nome da Mãozinha</label> <input
@@ -105,7 +96,7 @@
 							</div>
 							
 							<div class="pt-2">
-								<button type="submit" class="btn btn-primary">Adicionar</button>
+								<button type="submit" class="btn btn-primary">Editar</button>
 							</div>
 								
 						</form>

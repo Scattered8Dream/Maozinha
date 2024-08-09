@@ -12,6 +12,6 @@ public interface MaozinhaDAO {
 	
 	public MaozinhaDtls getMaozinhaById(int id);
 	
-	//public boolean editMaozinha(MaozinhaDtls maozinha);
+	public boolean updateEditMaozinha(MaozinhaDtls maozinha);
 	
 }

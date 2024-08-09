@@ -16,6 +16,18 @@
 <body style="background-color: #f0f2f3">
 	<%@include file="NavBar.jsp"%>
 
+	<h3 class="text-center">Olá,Admin!</h3>
+
+	<c:if test="${not empty succMsg }">
+		<h5 class="text-center text-success">${succMsg }</h5>
+		<c:remove var="succMsg" scope="session"/>
+	</c:if>
+	
+	<c:if test="${not empty failMsg }">
+		<h5 class="text-center text-danger">${failMsg }</h5>
+		<c:remove var="failMsg" scope="session"/>
+	</c:if>
+
 	<div class="container pt-3">
 		<table
 			class="table table-striped bg-primary table-hover table-bordered">

@@ -127,6 +127,37 @@ public class MaozinhaDAOImplement implements MaozinhaDAO {
 		return m;
 	}
 
-	
+	public boolean updateEditMaozinha(MaozinhaDtls maozinha){
+
+		boolean f=false;
+
+		try {
+
+			String slq = "update maozinha_dtls set maozinha_name=?,req_name=?,total_value=?,min_value=?,maozinha_category=?,status=? where id_maozinha =?";
+
+			ps.setString(1, maozinha.getMaozinha_name());
+			ps.setString(2, maozinha.getReq_name());
+			ps.setString(3, maozinha.getTotal_value());
+			ps.setString(4, maozinha.getMin_value());
+			ps.setString(5, maozinha.getCategory());
+			ps.setString(6, maozinha.getStatus());
+			ps.setInt(7,maozi.getMaozinha_id());
+			PreparedStatement ps = conn.prepareStatement(slq);
+			int i = ps.executeUpdate();
+
+			if (i == 1) {
+
+				f = true;
+
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return f;
+		
+
+	}
 	
 }
