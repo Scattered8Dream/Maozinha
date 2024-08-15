@@ -134,15 +134,16 @@ public class MaozinhaDAOImplement implements MaozinhaDAO {
 		try {
 
 			String slq = "update maozinha_dtls set maozinha_name=?,req_name=?,total_value=?,min_value=?,maozinha_category=?,status=? where id_maozinha =?";
-
+			
+			PreparedStatement ps = conn.prepareStatement(slq);
+			
 			ps.setString(1, maozinha.getMaozinha_name());
 			ps.setString(2, maozinha.getReq_name());
 			ps.setString(3, maozinha.getTotal_value());
 			ps.setString(4, maozinha.getMin_value());
 			ps.setString(5, maozinha.getCategory());
 			ps.setString(6, maozinha.getStatus());
-			ps.setInt(7,maozi.getMaozinha_id());
-			PreparedStatement ps = conn.prepareStatement(slq);
+			ps.setInt(7,maozinha.getMaozinha_id());
 			int i = ps.executeUpdate();
 
 			if (i == 1) {
@@ -157,7 +158,28 @@ public class MaozinhaDAOImplement implements MaozinhaDAO {
 
 		return f;
 		
-
 	}
+	
+	public boolean deleteMaozinhas(int id) {
+		
+		boolean f=false;
+		
+		try {
+			
+			String sql="delete from maozinha_dtls where id_maozinha = ?";
+			PreparedStatement ps =  conn.prepareStatement(sql);
+			ps.setInt(1, id);
+			int i =ps.executeUpdate();
+			if (i==1) {
+				
+				f=true;				
+			}
+	
+		} catch (Exception e) {
+			
+		}
+		
+		return f;
+	};
 	
 }

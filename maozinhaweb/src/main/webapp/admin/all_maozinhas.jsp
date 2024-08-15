@@ -15,6 +15,10 @@
 </head>
 <body style="background-color: #f0f2f3">
 	<%@include file="NavBar.jsp"%>
+	
+	<c:if test="${empty userobj}">
+		<c:redirect url="../login.jsp" />
+	</c:if>
 
 	<h3 class="text-center">Olá,Admin!</h3>
 
@@ -63,7 +67,7 @@
 					<td><%=m.getCategory()%></td>
 					<td><%=m.getStatus()%></td>
 					<td><a href="edit_maozinhas.jsp?id=<%=m.getMaozinha_id()%>" class="btn btn-sm btn-primary">Editar</a> 
-					<a href="#" class="btn btn-sm btn-danger">Deletar</a></td>
+					<a href="../delete?id=<%=m.getMaozinha_id() %>" class="btn btn-sm btn-danger">Deletar</a></td>
 				</tr>
 
 

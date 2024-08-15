@@ -23,6 +23,10 @@ a:hover {
 </head>
 <body style="background-color: #f0f2f3">
 	<%@include file="NavBar.jsp"%>
+	
+	<c:if test="${empty userobj}">
+		<c:redirect url="../login.jsp" />
+	</c:if>
 
 	<h5 class="text-center">Olá, admin !</h5>
 
@@ -62,7 +66,7 @@ a:hover {
 			</div>
 
 			<div class="col-md-3">
-			<a data-bs-toggle="modal" data-bs-target="#exampleModal">
+			<a data-bs-toggle="modal" data-bs-target="#exampleModalCenter">
 				<div class="card">
 					<div class="card-body text-center">
 						<i class="fa-solid fa-right-from-bracket fa-3x"></i>
@@ -76,26 +80,26 @@ a:hover {
 		</div>
 	</div>
 	
-	<!-- Modal -->
-	<div class="modal fade" id="exampleModal" tabindex="-1"
-		aria-labelledby="exampleModalLabel" aria-hidden="true">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h1 class="modal-title fs-5" id="exampleModalLabel">Deseja
-						sair?</h1>
-					<button type="button" class="btn-close" data-bs-dismiss="modal"
-						aria-label="Close"></button>
-				</div>
-				<div class="modal-footer">
-					<a class="btn btn-primary" href="../login.jsp" role="button">Logout</a>
-					<button type="button" class="btn btn-secondary"
-						data-bs-dismiss="modal">Fechar</button>
-				</div>
+<!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1"
+	aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h1 class="modal-title fs-5" id="exampleModalLabel">Deseja
+					sair?</h1>
+				<button type="button" class="btn-close" data-bs-dismiss="modal"
+					aria-label="Close"></button>
+			</div>
+			<div class="modal-footer">
+				<a href="../logout" class="btn btn-primary" type="button">Logout</a>
+				<button type="button" class="btn btn-secondary"
+					data-bs-dismiss="modal">Fechar</button>
 			</div>
 		</div>
 	</div>
-	<!-- Modal -->
+</div>
+<!-- Modal -->
 
 	<%@include file="footer.jsp"%>
 </body>

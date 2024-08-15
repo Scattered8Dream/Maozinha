@@ -11,6 +11,10 @@
 </head>
 <body style="background-color: #f0f2f3">
 	<%@include file="NavBar.jsp"%>
+	
+	<c:if test="${empty userobj}">
+		<c:redirect url="../login.jsp" />
+	</c:if>
 
 	<div class="container p-3">
 		<div class="row">

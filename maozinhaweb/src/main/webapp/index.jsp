@@ -28,9 +28,9 @@
 		<h2 class="text-center">Faça sua parte!</h2>
 	</div>
 
-	<% Connection conn = DBConnect.getConn(); 
+<%-- 	<% Connection conn = DBConnect.getConn(); 
 	out.println(conn);
-	%>
+	%> --%>
 
 	<!-- Começo das mãozinhas recentes -->
 

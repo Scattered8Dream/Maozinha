@@ -14,6 +14,10 @@
 </head>
 <body style="background-color: #f0f2f3">
 	<%@include file="NavBar.jsp"%>
+	
+	<c:if test="${empty userobj}">
+		<c:redirect url="../login.jsp" />
+	</c:if>
 
 	<div class="container p-3">
 		<div class="row">
@@ -30,7 +34,7 @@
 						
 						<form action="../edit_maozinhas" method="post">
 
-							<input type="hidden" name="id" value="<%=m.getMaozinha_id()>">
+							<input type="hidden" name="id" value="<%=m.getMaozinha_id()%>">
 
 							<div class="form-group pt-2">
 								<label for="exampleInputEmail">Nome da Mãozinha</label> <input
@@ -56,17 +60,6 @@
 									id=exampleInputPassword1 value="<%=m.getMin_value()%>">
 							</div>
 
-							<div class="form-group pt-2">
-								<label for="inputState">Categorias de mãozinhas</label> <select
-									id="inputState" name="mtype" class="form-control">
-
-									<option selected>--escolha--</option>
-									<option value="Gastos médicos">Gastos médicos</option>
-									<option value="Outros">Outros</option>
-
-								</select>
-								
-								</div>
 
 								<div class="form-group pt-2">
 									<label for="inputState">Estado da mãozinha</label> <select
@@ -75,11 +68,12 @@
 										<%if("Em andamento".equals(m.getStatus())){%>
 											
 											<option value="Inativa">Inativa</option>
+											<option value="Em andamento">Em andamento</option>
 											<option value="Completa">Completa</option>
 											<option value="Outro">Outros</option>
 											
 										<%}else{%>
-										
+											<option value="Inativa">Inativa</option>
 											<option value="Em andamento">Em andamento</option>
 											<option value="Completa">Completa</option>
 											<option value="Outro">Outros</option>
