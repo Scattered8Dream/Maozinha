@@ -16,4 +16,10 @@ public interface MaozinhaDAO {
 	
 	public boolean deleteMaozinhas(int id);
 	
+	public List<MaozinhaDtls> getNewMaozinha();
+	
+	public List<MaozinhaDtls> getRecentMaozinhas();
+	
+	
+	
 }

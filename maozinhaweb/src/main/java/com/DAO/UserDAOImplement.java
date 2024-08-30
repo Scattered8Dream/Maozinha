@@ -80,4 +80,33 @@ public class  UserDAOImplement implements UserDAO {
 		return f;
 	}
 
+
+
+	@Override
+	public boolean checkPassword(int id, String password) {
+		boolean f = true;
+		
+		try {
+			
+			String sql = "select * from user where id= ? and password=? ";
+			PreparedStatement pst = conn.prepareStatement(sql);
+			pst.setInt(1, id);
+			pst.setString(1, password);
+			
+			ResultSet rs = pst.executeQuery();
+			while (rs.next()) {
+				f=false;
+				
+			}
+			
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return false;
+	}
+	
+	
+
 }

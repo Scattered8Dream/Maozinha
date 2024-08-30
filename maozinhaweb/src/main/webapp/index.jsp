@@ -1,5 +1,11 @@
+<%@page import="com.entity.MaozinhaDtls"%>
+<%@page import="com.entity.User"%>
+<%@page import="com.DAO.MaozinhaDAOImplement"%>
 <%@page import="com.DB.DBConnect"%>
 <%@page import="java.sql.Connection"%>
+<%@page import="java.util.List"%>
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
+<%@page isELIgnored="false" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -23,104 +29,62 @@
 </style>
 </head>
 <body>
+
+	<%User user = (User)session.getAttribute("userobj"); %>
+
 	<%@include file="all_components/NavBar.jsp"%>
 	<div class="container-fluid back-img">
 		<h2 class="text-center">Faça sua parte!</h2>
 	</div>
 
-<%-- 	<% Connection conn = DBConnect.getConn(); 
-	out.println(conn);
-	%> --%>
-
 	<!-- Começo das mãozinhas recentes -->
 
 	<div class="container-fluid" style="background-color: #f7f7f7;">
-		<h3 class="text-center pt-2 pb-2">Últimas mãozinhas</h3>
+		<h3 class="text-center pt-2 pb-2">Mãozinhas médicas</h3>
 		<div class="row">
-			<div class="col-md-3">
+				<%
+				MaozinhaDAOImplement dao = new MaozinhaDAOImplement(DBConnect.getConn());
+				List<MaozinhaDtls> list = dao.getNewMaozinha();
+				for (MaozinhaDtls m : list) {
+				%>
+				<div class="col-md-3">
 				<div class="card crd-ho">
 					<div class="card-body text-center">
-						<img alt="cadeira de rodas" src="resources/cadeira de rodas.jpg"
-							style="width: auto; height: 100%" class="img-thumbnail">
-						<p>Cadeira de rodas da Ciça.</p>
-						<p>Dona Ciça</p>
-						<p>Categoria: Ajuda com equipamento</p>
-						<a href="" class="btn btn-danger btn-block"><i
+						<img alt="" src="maozinhas_img/<%=m.getPhotoName() %>"
+							style="width: 150px; height: 200px" class="img-thumbnail">
+						<p><%=m.getMaozinha_name()%></p>
+						<p><%=m.getReq_name()%></p>
+						<p>
+							Categoria:
+							<%=m.getCategory()%></p>
+							
+						<% if(user==null){ %>
+							<a href="login.jsp" class="btn btn-danger btn-block"><i
 							class="fa-solid fa-plus"></i><i class="fa-solid fa-cart-shopping"></i></a>
-						<a href="" class="btn btn-success btn-block"><i
-							class="fa-solid fa-plus"></i><i
-							class="fa-regular fa-address-book"></i></a> <a href=""
+							<a href="login.jsp"
 							class="btn btn-danger btn-block"><i
-							class="fa-solid fa-brazilian-real-sign"> 5,00</i></a>
+							class="fa-solid fa-brazilian-real-sign"> <%=m.getMin_value()%></i></a>
+						<%}else{%>
+							<a href="cart?mid=<%=m.getMaozinha_id() %>&&uid=<%=user.getId() %>" class="btn btn-danger btn-block"><i
+							class="fa-solid fa-plus"></i><i class="fa-solid fa-cart-shopping"></i></a>
+							<a href=""
+							class="btn btn-danger btn-block"><i
+							class="fa-solid fa-brazilian-real-sign"> <%=m.getMin_value()%></i></a>
+						<%}%>
+						
+						<a href="view_maozinhas.jsp?mid=<%=m.getMaozinha_id() %>" class="btn btn-success btn-block"><i
+							class="fa-solid fa-plus"></i><i
+							class="fa-regular fa-address-book"></i></a>
 					</div>
 				</div>
+				</div>	
+
+				<%
+				}
+				%>
 
 			</div>
 
-			<div class="col-md-3">
-				<div class="card crd-ho">
-					<div class="card-body text-center">
-						<img alt="cadeira de rodas" src="resources/cadeira de rodas.jpg"
-							style="width: auto; height: 100%" class="img-thumbnail">
-						<p>Cadeira de rodas da Ciça.</p>
-						<p>Dona Ciça</p>
-						<p>Categoria: Ajuda com equipamento</p>
-						<a href="" class="btn btn-danger btn-block"><i
-							class="fa-solid fa-plus"></i><i class="fa-solid fa-cart-shopping"></i></a>
-						<a href="" class="btn btn-success btn-block"><i
-							class="fa-solid fa-plus"></i><i
-							class="fa-regular fa-address-book"></i></a> <a href=""
-							class="btn btn-danger btn-block"><i
-							class="fa-solid fa-brazilian-real-sign"> 5,00</i></a>
-					</div>
-				</div>
-
-			</div>
-
-			<div class="col-md-3">
-				<div class="card crd-ho">
-					<div class="card-body text-center">
-						<img alt="cadeira de rodas" src="resources/cadeira de rodas.jpg"
-							style="width: auto; height: 100%" class="img-thumbnail">
-						<p>Cadeira de rodas da Ciça.</p>
-						<p>Dona Ciça</p>
-						<p>Categoria: Ajuda com equipamento</p>
-						<a href="" class="btn btn-danger btn-block"><i
-							class="fa-solid fa-plus"></i><i class="fa-solid fa-cart-shopping"></i></a>
-						<a href="" class="btn btn-success btn-block"><i
-							class="fa-solid fa-plus"></i><i
-							class="fa-regular fa-address-book"></i></a> <a href=""
-							class="btn btn-danger btn-block"><i
-							class="fa-solid fa-brazilian-real-sign"> 5,00</i></a>
-					</div>
-				</div>
-
-			</div>
-
-			<div class="col-md-3">
-				<div class="card crd-ho">
-					<div class="card-body text-center">
-						<img alt="cadeira de rodas" src="resources/cadeira de rodas.jpg"
-							style="width:; height: 100%" class="img-thumbnail">
-						<p>Cadeira de rodas da Ciça.</p>
-						<p>Dona Ciça</p>
-						<p>Categoria: Ajuda com equipamento</p>
-						<a href="" class="btn btn-danger btn-block"><i
-							class="fa-solid fa-plus"></i><i class="fa-solid fa-cart-shopping"></i></a>
-						<a href="" class="btn btn-success btn-block"><i
-							class="fa-solid fa-plus"></i><i
-							class="fa-regular fa-address-book"></i></a> <a href=""
-							class="btn btn-danger btn-block"><i
-							class="fa-solid fa-brazilian-real-sign"> 5,00</i></a>
-					</div>
-				</div>
-
-			</div>
-
-		</div>
-
-		<div class="text-center p-3">
-			<a href="" class="btn btn-danger btn-sm text-white">Ver tudo!</a>
 		</div>
 
 	</div>
@@ -134,91 +98,55 @@
 	<div class="container-fluid" style="background-color: #f7f7f7;">
 		<h3 class="text-center pt-2 pb-2">Todas as mãozinhas</h3>
 		<div class="row">
-			<div class="col-md-3">
+			<%
+				MaozinhaDAOImplement dao2 = new MaozinhaDAOImplement(DBConnect.getConn());
+				List<MaozinhaDtls> list2 = dao2.getRecentMaozinhas();
+				for (MaozinhaDtls m : list2) {
+				%>
+				<div class="col-md-3">
 				<div class="card crd-ho">
 					<div class="card-body text-center">
-						<img alt="cadeira de rodas" src="resources/cadeira de rodas.jpg"
-							style="width: auto; height: 100%" class="img-thumbnail">
-						<p>Cadeira de rodas da Ciça.</p>
-						<p>Dona Ciça</p>
-						<p>Categoria: Ajuda com equipamento</p>
-						<a href="" class="btn btn-danger btn-block"><i
+						<img alt="cadeira de rodas" src="maozinhas_img/<%=m.getPhotoName() %>"
+							style="width: 150px; height: 200px" class="img-thumbnail">
+						<p><%=m.getMaozinha_name()%></p>
+						<p><%=m.getReq_name()%></p>
+						<p>
+							Categoria:
+							<%=m.getCategory()%></p>
+						<% if(user==null){ %>
+							<a href="login.jsp" class="btn btn-danger btn-block"><i
 							class="fa-solid fa-plus"></i><i class="fa-solid fa-cart-shopping"></i></a>
-						<a href="" class="btn btn-success btn-block"><i
-							class="fa-solid fa-plus"></i><i
-							class="fa-regular fa-address-book"></i></a> <a href=""
+							<a href="login.jsp"
 							class="btn btn-danger btn-block"><i
-							class="fa-solid fa-brazilian-real-sign"> 5,00</i></a>
+							class="fa-solid fa-brazilian-real-sign"> <%=m.getMin_value()%></i></a>
+						<%}else{%>
+							<a href="cart?mid=<%=m.getMaozinha_id() %>&&uid=<% %>" class="btn btn-danger btn-block"><i
+							class="fa-solid fa-plus"></i><i class="fa-solid fa-cart-shopping"></i></a>
+							<a href=""
+							class="btn btn-danger btn-block"><i
+							class="fa-solid fa-brazilian-real-sign"> <%=m.getMin_value()%></i></a>
+						<%}%>
+						
+						<a href="view_maozinhas.jsp?mid=<%=m.getMaozinha_id() %>" class="btn btn-success btn-block"><i
+							class="fa-solid fa-plus"></i><i
+							class="fa-regular fa-address-book"></i></a>
 					</div>
 				</div>
+				</div>	
 
-			</div>
-
-			<div class="col-md-3">
-				<div class="card crd-ho">
-					<div class="card-body text-center">
-						<img alt="cadeira de rodas" src="resources/cadeira de rodas.jpg"
-							style="width: auto; height: 100%" class="img-thumbnail">
-						<p>Cadeira de rodas da Ciça.</p>
-						<p>Dona Ciça</p>
-						<p>Categoria: Ajuda com equipamento</p>
-						<a href="" class="btn btn-danger btn-block"><i
-							class="fa-solid fa-plus"></i><i class="fa-solid fa-cart-shopping"></i></a>
-						<a href="" class="btn btn-success btn-block"><i
-							class="fa-solid fa-plus"></i><i
-							class="fa-regular fa-address-book"></i></a> <a href=""
-							class="btn btn-danger btn-block"><i
-							class="fa-solid fa-brazilian-real-sign"> 5,00</i></a>
-					</div>
-				</div>
-
-			</div>
-
-			<div class="col-md-3">
-				<div class="card crd-ho">
-					<div class="card-body text-center">
-						<img alt="cadeira de rodas" src="resources/cadeira de rodas.jpg"
-							style="width: auto; height: 100%" class="img-thumbnail">
-						<p>Cadeira de rodas da Ciça.</p>
-						<p>Dona Ciça</p>
-						<p>Categoria: Ajuda com equipamento</p>
-						<a href="" class="btn btn-danger btn-block"><i
-							class="fa-solid fa-plus"></i><i class="fa-solid fa-cart-shopping"></i></a>
-						<a href="" class="btn btn-success btn-block"><i
-							class="fa-solid fa-plus"></i><i
-							class="fa-regular fa-address-book"></i></a> <a href=""
-							class="btn btn-danger btn-block"><i
-							class="fa-solid fa-brazilian-real-sign"> 5,00</i></a>
-					</div>
-				</div>
-
-			</div>
-
-			<div class="col-md-3">
-				<div class="card crd-ho">
-					<div class="card-body text-center">
-						<img alt="cadeira de rodas" src="resources/cadeira de rodas.jpg"
-							style="width:; height: 100%" class="img-thumbnail">
-						<p>Cadeira de rodas da Ciça.</p>
-						<p>Dona Ciça</p>
-						<p>Categoria: Ajuda com equipamento</p>
-						<a href="" class="btn btn-danger btn-block"><i
-							class="fa-solid fa-plus"></i><i class="fa-solid fa-cart-shopping"></i></a>
-						<a href="" class="btn btn-success btn-block"><i
-							class="fa-solid fa-plus"></i><i
-							class="fa-regular fa-address-book"></i></a> <a href=""
-							class="btn btn-danger btn-block"><i
-							class="fa-solid fa-brazilian-real-sign"> 5,00</i></a>
-					</div>
-				</div>
-
-			</div>
+				<%
+				}
+				%>
 
 		</div>
 
 	</div>
 
 	<!-- Final todas as mãozinhas -->
+	
+	<div class="text-center p-3">
+			<a href="" class="btn btn-danger btn-sm text-white">Ver tudo!</a>
+		</div>
 
 	<%@include file="all_components/footer.jsp"%>
 

@@ -8,4 +8,6 @@ public interface UserDAO {
 	
 	public  User login(String email, String password);
 
+	public boolean checkPassword(int id,String password);
+	
 }
