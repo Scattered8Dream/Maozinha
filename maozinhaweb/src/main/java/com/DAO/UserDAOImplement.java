@@ -84,18 +84,18 @@ public class  UserDAOImplement implements UserDAO {
 
 	@Override
 	public boolean checkPassword(int id, String password) {
-		boolean f = true;
+		boolean f = false;
 		
 		try {
 			
-			String sql = "select * from user where id= ? and password=? ";
+			String sql = "select * from user where iduser=? and password=? ";
 			PreparedStatement pst = conn.prepareStatement(sql);
 			pst.setInt(1, id);
-			pst.setString(1, password);
+			pst.setString(2, password);
 			
 			ResultSet rs = pst.executeQuery();
 			while (rs.next()) {
-				f=false;
+				f=true;
 				
 			}
 			
@@ -104,8 +104,40 @@ public class  UserDAOImplement implements UserDAO {
 			e.printStackTrace();
 		}
 		
-		return false;
+		return f;
 	}
+
+
+
+	@Override
+	public boolean updateProfile(User user) {
+		
+boolean f = false;
+		
+		try {
+			String sql= "update user set name=?,email=?,phone=? where iduser=?";
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setString(1, user.getName());
+			ps.setString(2, user.getEmail());
+			ps.setString(3, user.getPhone());
+			ps.setInt(4, user.getId());
+			
+			int i = ps.executeUpdate();
+			if (i == 1) {
+				
+				f=true;
+				
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		//System.out.println(f);
+		
+		return f;
+	}
+	
 	
 	
 

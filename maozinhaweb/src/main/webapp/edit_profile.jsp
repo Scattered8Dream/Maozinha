@@ -24,10 +24,20 @@
 					<div class="card-body">
 
 						<h4 class="text-center">Editar usuário</h4>
+						
+						<c:if test="${not empty failMsg }">
+							<h5 class="text-center text-danger">${failMsg }</h5>
+							<c:remove var="failMsg" scope="session"/>
+						</c:if>
+						
+						<c:if test="${not empty succMsg }">
+							<h5 class="text-center text-success">${succMsg }</h5>
+							<c:remove var="succMsg" scope="session"/>
+						</c:if>
 
 						<form action="update_profile" method="post">
 							
-							<input type="hidden" value="${userobj.id" name="id">
+							<input type="hidden" value="${userobj.id}" name="id">
 							
 							<div class="mb-3">
 								<label for="exampleInputEmail1" class="form-label">Nome
