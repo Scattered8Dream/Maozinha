@@ -59,19 +59,19 @@ text-decoration: none;
 				</a>
 			</div>
 			
-			<div class="col-md-4 mt-3">
-				<a href="user_address.jsp">
-					<div class="card">
-						<div class="text-center card-body">
-							<div class="text-primary"><i class="fa-solid fa-location-dot fa-3x"></i></div>
-							<h4>Seu endereço</h4>
-							<p>Altere seu endereço</p>
-						</div>
-					</div>
-				</a>
-			</div>
+<!-- 			<div class="col-md-4 mt-3"> -->
+<!-- 				<a href="user_address.jsp"> -->
+<!-- 					<div class="card"> -->
+<!-- 						<div class="text-center card-body"> -->
+<!-- 							<div class="text-primary"><i class="fa-solid fa-location-dot fa-3x"></i></div> -->
+<!-- 							<h4>Seu endereço</h4> -->
+<!-- 							<p>Altere seu endereço</p> -->
+<!-- 						</div> -->
+<!-- 					</div> -->
+<!-- 				</a> -->
+<!-- 			</div> -->
 			
-			<div class="col-md-4 mt-3">
+			<div class="col-md-6 mt-3">
 				<a href="order.jsp">
 					<div class="card">
 						<div class="text-center card-body">
@@ -83,8 +83,8 @@ text-decoration: none;
 				</a>
 			</div>
 			
-			<div class="col-md-4 mt-3">
-				<a href="">
+			<div class="col-md-6 mt-3">
+				<a href="helpdesk.jsp">
 					<div class="card">
 						<div class="text-center card-body">
 							<div class="text-primary"><i class="fa-solid fa-circle-user fa-3x"></i></div>

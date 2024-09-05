@@ -58,14 +58,14 @@
 				<li class="nav-item"><a class="nav-link active"
 					aria-current="page" href="index.jsp"><i class="fa-solid fa-house m-2"></i>Home</a>
 				</li>
+<!-- 				<li class="nav-item"><a class="nav-link active" -->
+<!-- 					aria-current="page" href="#"><i class="fa-solid fa-star m-2"></i>Em -->
+<!-- 						andamento</a></li> -->
+<!-- 				<li class="nav-item"><a class="nav-link active" -->
+<!-- 					aria-current="page" href="#"><i class="fa-solid fa-hand m-2"></i>Mãozinhas</a> -->
+<!-- 				</li> -->
 				<li class="nav-item"><a class="nav-link active"
-					aria-current="page" href="#"><i class="fa-solid fa-star m-2"></i>Em
-						andamento</a></li>
-				<li class="nav-item"><a class="nav-link active"
-					aria-current="page" href="#"><i class="fa-solid fa-hand m-2"></i>Mãozinhas</a>
-				</li>
-				<li class="nav-item"><a class="nav-link active"
-					aria-current="page" href="#"><i
+					aria-current="page" href="whoweare.jsp"><i
 						class="fa-solid fa-question m-2"></i>Sobre nós</a></li>
 				<li class="nav-item">
 			</ul>
@@ -73,9 +73,9 @@
 				<a href="setting.jsp" class="btn btn-light my-2 my-sm-0" type="submit">
 					<i class="fa-solid fa-gear"></i> Configurações
 				</a>
-				<button class="btn btn-danger my-2 my-sm-0" type="submit">
+				<a href="contactus.jsp" class="btn btn-danger my-2 my-sm-0" type="submit">
 					<i class="fa-solid fa-phone"></i> Contato
-				</button>
+				</a>
 			</form>
 		</div>
 	</div>

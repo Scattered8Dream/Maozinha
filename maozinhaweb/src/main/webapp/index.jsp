@@ -13,6 +13,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Mãozinha</title>
+<link rel="shortcut icon" href="/resources/help.png" type="image/x-icon">
 <%@include file="all_components/CSS.jsp"%>
 <style type="text/css">
 .back-img {

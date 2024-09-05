@@ -96,24 +96,30 @@
 						<h3 class="text-center">Detalhes do pedido</h3>
 						<form class="row g-3">
 							<div class="col-md-6">
+							<div class="col-12">
+							
+								<label for="inputName" class="form-label">Nome</label> <input
+									name="username" type="text" class="form-control" id="inputName" value="<%=u.getName()%>">
+							</div>
+							
 								<label for="inputEmail4" class="form-label">Email</label> <input
-									type="email" class="form-control" id="inputEmail4" value="<%=u.getEmail()%>">
+									name="email" type="email" class="form-control" id="inputEmail4" value="<%=u.getEmail()%>">
 							</div>
 							<div class="col-md-6">
 								<label for="inputEmail4" class="form-label">Telefone</label> <input
-									type="number" class="form-control" id="inputEmail4" value="<%=u.getPhone()%>">
+									name="phone" type="number" class="form-control" id="inputEmail4" value="<%=u.getPhone()%>">
 							</div>
 							<div class="col-12">
 								<label for="inputAddress" class="form-label">Endereço</label> <input
-									type="text" class="form-control" id="inputAddress" value="">
+									name="address" type="text" class="form-control" id="inputAddress" value="">
 							</div>
 							<div class="col-md-6">
 								<label for="inputCity" class="form-label">Cidade</label> <input
-									type="text" class="form-control" id="inputCity">
+									name="city" type="text" class="form-control" id="inputCity">
 							</div>
 							<div class="col-md-4">
 								<label for="inputState" class="form-label">Estado</label> <select
-									id="inputState" class="form-select">
+									name="state" id="inputState" class="form-select">
 									<option selected>Escolha...</option>
 									<option value="AC">Acre</option>
 									<option value="AL">Alagoas</option>
@@ -145,12 +151,12 @@
 								</select>
 							</div>
 							<div class="col-md-2">
-								<label for="inputCpf" class="form-label">CPF</label> <input
-									type="text" class="form-control" id="inputCpf">
+								<label for="inputCpf" class="form-label">CEP</label> <input
+									name="pincode" type="text" class="form-control" id="inputCpf">
 							</div>
 							<div class="col-12">
 								<label for="inputState" class="form-label">Meio de
-									pagamento</label> <select id="inputState" class="form-select">
+									pagamento</label> <select id="inputState" class="form-select" name="paymentType">
 									<option selected>Escolha...</option>
 									<option value="SP">PIX</option>
 									<option value="SE">Crédito</option>
